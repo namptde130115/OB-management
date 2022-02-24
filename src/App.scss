@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+.ant-menu:not(.ant-menu-horizontal) > .ant-menu-item-selected {
+  background-color: #fff7e5 !important;
+  color: #000;
+  > svg {
+    fill: #ffa544 !important;
+  }
+  > span {
+    font-weight: 700 !important;
+  }
+}
