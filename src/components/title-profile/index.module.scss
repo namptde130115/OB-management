@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.title {
+  width: 30%;
+  margin: 0;
+  display: inline-flex;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.content {
+  flex: 1;
+  margin: 0;
+  display: inline-flex;
+  font-size: 14px;
+}
