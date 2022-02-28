@@ -13,15 +13,20 @@ import { ExitIcon } from '../../assets/icons/ExitIcon';
 import styles from './index.module.scss';
 import clsx from 'clsx';
 import { useState } from 'react';
+import { ButtonCustom } from '../../components/button';
 
 const { Panel } = Collapse;
 
 export const ProfilePage = () => {
   const [collapse, setCollapse] = useState<string[]>([]);
+  const [collapse2, setCollapse2] = useState<string[]>([]);
 
-  function callback(key: any) {
+  function callbackCollapse(key: any) {
     setCollapse(key);
-    // console.log('collapse', collapse);
+  }
+
+  function callbackCollapse2(key: any) {
+    setCollapse2(key);
   }
 
   const text = `
@@ -54,25 +59,51 @@ export const ProfilePage = () => {
       <div>
         <Collapse
           // defaultActiveKey={['1']}
-          onChange={callback}
+          onChange={callbackCollapse}
           expandIconPosition='right'
           className={clsx(styles.profile__collapse)}
         >
           <Panel
             showArrow={false}
             header={
-              <TitleProfile title='名前と苗字' content='グエンホアンサン' />
+              <TitleProfile
+                className={clsx({
+                  [styles.profile__title]: collapse.includes('1'),
+                })}
+                title='名前と苗字'
+                content={
+                  !collapse.includes('1')
+                    ? 'グエンホアンサン'
+                    : '新のんつ第度でフぐじ果変トでこ再細'
+                }
+              />
             }
             key='1'
             extra={!collapse.includes('1') ? genExtra() : genSmall()}
           >
-            <div>{text}</div>
+            <div>
+              <ButtonCustom type='primary' text='primary' icon={<EditIcon />} />
+              <ButtonCustom type='ghost' text='ghost' icon={<EditIcon />} />
+              <ButtonCustom type='link' text='link' icon={<EditIcon />} />
+            </div>
           </Panel>
           <Panel
             showArrow={false}
-            header={<TitleProfile title='生年月日' content='1996/01/01' />}
+            header={
+              <TitleProfile
+                className={clsx({
+                  [styles.profile__title]: collapse.includes('2'),
+                })}
+                title='生年月日'
+                content={
+                  !collapse.includes('2')
+                    ? '1996/01/01'
+                    : '新のんつ第度でフぐじ果変トでこ再細'
+                }
+              />
+            }
             key='2'
-            extra={genExtra()}
+            extra={!collapse.includes('2') ? genExtra() : genSmall()}
           >
             <div>{text}</div>
           </Panel>
@@ -80,27 +111,46 @@ export const ProfilePage = () => {
             showArrow={false}
             header={
               <TitleProfile
+                className={clsx({
+                  [styles.profile__title]: collapse.includes('3'),
+                })}
                 title='電子メールアドレス'
-                content='example@gmail.com'
+                content={
+                  !collapse.includes('3')
+                    ? 'example@gmail.com'
+                    : '新のんつ第度でフぐじ果変トでこ再細'
+                }
               />
             }
             key='3'
-            extra={genExtra()}
+            extra={!collapse.includes('3') ? genExtra() : genSmall()}
           >
             <div>{text}</div>
           </Panel>
         </Collapse>
         <Collapse
           // defaultActiveKey={['1']}
-          onChange={callback}
+          onChange={callbackCollapse2}
           expandIconPosition='right'
           className={clsx(styles.profile__collapse, styles.marginTop)}
         >
           <Panel
             showArrow={false}
-            header={<TitleProfile title='パスワード' content='••••••••••' />}
-            key='1'
-            extra={genExtra()}
+            header={
+              <TitleProfile
+                className={clsx({
+                  [styles.profile__title]: collapse2.includes('4'),
+                })}
+                title='パスワード'
+                content={
+                  !collapse2.includes('4')
+                    ? '••••••••••'
+                    : '何カエクラ況断99並練機博64弾ーッわず企励ソ原観ゅぞ渡極る阪筋イんめ治捕き'
+                }
+              />
+            }
+            key='4'
+            extra={!collapse2.includes('4') ? genExtra() : genSmall()}
           >
             <div>{text}</div>
           </Panel>

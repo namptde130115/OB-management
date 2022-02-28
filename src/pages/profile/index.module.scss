@@ -36,3 +36,10 @@
 .marginTop {
   margin-top: 20px;
 }
+
+.profile__title {
+  > p:last-child {
+    font-size: 14px;
+    color: #989898;
+  }
+}
